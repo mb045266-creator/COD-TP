@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="تطبيق تتبع الطلبات - نسخة الهاتف">
+    <meta name="theme-color" content="#2c3e50">
+    <title>COD TP Mobile</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%232c3e50' width='180' height='180'/><text x='90' y='130' font-size='80' font-weight='bold' fill='white' text-anchor='middle'>COD</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <div id="mobileApp" class="mobile-app">
+        <!-- صفحة تسجيل الدخول -->
+        <div id="mobileLoginPage" class="mobile-page active">
+            <div class="mobile-login">
+                <div class="mobile-logo">COD TP</div>
+                <h1>تطبيق الوكلاء</h1>
+                
+                <form id="mobileLoginForm" class="mobile-form">
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="mobileEmail" 
+                            placeholder="البريد الإلكتروني"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <input 
+                            type="password" 
+                            id="mobilePassword" 
+                            placeholder="كلمة المرور"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">دخول</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- صفحة الطلبات -->
+        <div id="mobileOrdersPage" class="mobile-page">
+            <div class="mobile-header">
+                <h1>الطلبات المسندة إليّ</h1>
+                <div class="header-actions">
+                    <button id="refreshOrdersBtn" class="btn-icon">⟳</button>
+                    <button id="filterOrdersBtn" class="btn-icon">⊙</button>
+                </div>
+            </div>
+
+            <div class="mobile-filters">
+                <select id="mobileOrderStatus" class="mobile-input">
+                    <option value="">جميع الحالات</option>
+                    <option value="pending">قيد الانتظار</option>
+                    <option value="confirmed">مؤكدة</option>
+                    <option value="shipped">مُرسلة</option>
+                    <option value="delivered">موصلة</option>
+                    <option value="cancelled">ملغاة</option>
+                </select>
+            </div>
+
+            <div id="mobileOrdersList" class="mobile-list">
+                <!-- الطلبات تُضاف هنا ديناميكياً -->
+            </div>
+        </div>
+
+        <!-- صفحة تفاصيل الطلب -->
+        <div id="mobileOrderDetailsPage" class="mobile-page">
+            <div class="mobile-header">
+                <button class="btn-icon btn-back">←</button>
+                <h1 id="orderIdDisplay"></h1>
+            </div>
+
+            <div id="mobileOrderDetails" class="order-details-card">
+                <!-- التفاصيل تُضاف هنا ديناميكياً -->
+            </div>
+
+            <div class="order-actions">
+                <button id="confirmOrderBtn" class="btn btn-success btn-block">تأكيد الطلب</button>
+                <button id="shipOrderBtn" class="btn btn-info btn-block">تأكيد الشحن</button>
+                <button id="cancelOrderBtn" class="btn btn-danger btn-block">إلغاء الطلب</button>
+            </div>
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <div class="mobile-navbar">
+            <button class="nav-item active" data-page="mobileOrders">
+                <span class="icon">📦</span>
+                <span class="label">الطلبات</span>
+            </button>
+            <button class="nav-item" data-page="mobileStats">
+                <span class="icon">📊</span>
+                <span class="label">الإحصائيات</span>
+            </button>
+            <button class="nav-item" data-page="mobileProfile">
+                <span class="icon">👤</span>
+                <span class="label">الملف الشخصي</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- تنبيهات -->
+    <div id="mobileNotifications" class="mobile-notifications"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/mobile.js"></script>
+</body>
+</html>
